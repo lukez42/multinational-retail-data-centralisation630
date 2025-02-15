@@ -1,13 +1,12 @@
 import sqlalchemy
 import yaml
 
-
 class DatabaseConnector:
     """
-    A utility class to connect to a database and upload data.
+    A utility class to connect to different databases (AWS RDS or local).
     """
 
-    def __init__(self, creds_file="db_creds.yaml"):
+    def __init__(self, creds_file):
         """
         Initializes the DatabaseConnector with credentials.
 
@@ -29,38 +28,36 @@ class DatabaseConnector:
         with open(creds_file, "r") as file:
             return yaml.safe_load(file)
 
-    def init_db_engine(self):
-        """
-        Initializes and returns a SQLAlchemy database engine.
 
-        Returns:
-            sqlalchemy.engine.Engine: Database engine.
-        """
-        connection_string = (
-            f"postgresql://{self.creds['RDS_USER']}:{self.creds['RDS_PASSWORD']}@"
-            f"{self.creds['RDS_HOST']}:{self.creds['RDS_PORT']}/{self.creds['RDS_DATABASE']}"
-        )
-        return sqlalchemy.create_engine(connection_string)
+    def init_db_engine(self, source="aws"):
+        """Initializes and returns a SQLAlchemy database engine."""
+        try:
+            if source == "aws":
+                connection_string = (
+                    f"postgresql://{self.creds['RDS_USER']}:{self.creds['RDS_PASSWORD']}@"
+                    f"{self.creds['RDS_HOST']}:{self.creds['RDS_PORT']}/{self.creds['RDS_DATABASE']}"
+                )
+            elif source == "local":
+                connection_string = (
+                    f"postgresql://{self.creds['RDS_USER']}:{self.creds['RDS_PASSWORD']}@"
+                    f"{self.creds['RDS_HOST']}:{self.creds['RDS_PORT']}/{self.creds['RDS_DATABASE']}"
+                )
+            return sqlalchemy.create_engine(connection_string)
+        except Exception as e:
+            print(f"Error initializing database engine: {e}")
+            return None
 
     def list_db_tables(self):
         """
-        Lists all tables in the database.
-
-        Returns:
-            list: List of table names.
+        Lists all tables in the AWS RDS database.
         """
-        engine = self.init_db_engine()
+        engine = self.init_db_engine(source="aws")
         with engine.connect() as connection:
             return sqlalchemy.inspect(engine).get_table_names()
 
-    # database_utils.py (continued)
     def upload_to_db(self, df, table_name):
         """
-        Uploads a DataFrame to a database table.
-
-        Args:
-            df (pd.DataFrame): DataFrame to upload.
-            table_name (str): Name of the table.
+        Uploads a DataFrame to the local PostgreSQL database.
         """
-        engine = self.init_db_engine()
+        engine = self.init_db_engine(source="local")
         df.to_sql(table_name, engine, if_exists="replace", index=False)
