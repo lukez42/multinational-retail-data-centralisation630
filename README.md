@@ -1,10 +1,9 @@
-# Project Title
-**Multinational Retail Data Centralisation**
+# Multinational Retail Data Centralisation
 
 ---
 
 ## Table of Contents
-- [Project Title](#project-title)
+- [Multinational Retail Data Centralisation](#multinational-retail-data-centralisation)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
     - [Objectives](#objectives)
@@ -49,7 +48,7 @@ To run this project locally, follow these steps:
 
 ## File Structure
 ```
-your-repo-name/
+multinational-retail-data-centralisation630/
 ├── data_cleaning.py          # Contains data cleaning methods
 ├── data_extraction.py        # Contains data extraction methods
 ├── database_utils.py         # Contains database connection and upload methods
