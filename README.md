@@ -55,8 +55,8 @@ multinational-retail-data-centralisation630/
 ├── main.py                   # Main script to run the pipeline
 ├── requirements.txt          # List of dependencies
 ├── README.md                 # Project documentation
-├── aws_db_creds.yaml         # AWS RDS database credentials
-└── local_db_creds.yaml       # Local PostgreSQL database credentials
+├── aws_db_creds.yaml         # AWS RDS database credentials (.gitignore)
+└── local_db_creds.yaml       # Local PostgreSQL database credentials (.gitignore)
 ```
 
 ## License
