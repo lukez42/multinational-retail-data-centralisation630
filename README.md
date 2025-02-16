@@ -36,7 +36,11 @@ To run this project locally, follow these steps:
    ```
 2. **Set Up a Virtual Environment (conda)**:
 3. **Install Dependencies**:
-4. **Set Up PostgreSQL Database**:
+   See `requirements.txt` for a list of required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Set Up PostgreSQL Database and Open Source graphical management tool for PostgreSQL(pgAdmin 4)**:
 
 ## Usage
 
