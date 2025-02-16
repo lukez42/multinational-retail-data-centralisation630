@@ -53,15 +53,19 @@ To run this project locally, follow these steps:
 
 ## File Structure
 ```
-multinational-retail-data-centralisation630/
+.
+├── README.md                 # Project documentation
+├── main.ipynb                # Main Jupyter notebook for analysis or exploration
+├── main.py                   # Main script to run the pipeline (for testing)
+├── aws_db_creds.yaml         # AWS RDS database credentials (.gitignore)
+├── local_db_creds.yaml       # Local PostgreSQL database credentials (.gitignore)
 ├── data_cleaning.py          # Contains data cleaning methods
 ├── data_extraction.py        # Contains data extraction methods
 ├── database_utils.py         # Contains database connection and upload methods
-├── main.py                   # Main script to run the pipeline
+├── debug_csv/                # Debugging CSV files
 ├── requirements.txt          # List of dependencies
-├── README.md                 # Project documentation
-├── aws_db_creds.yaml         # AWS RDS database credentials (.gitignore)
-└── local_db_creds.yaml       # Local PostgreSQL database credentials (.gitignore)
+├── sales_data_milstone3.sql  # SQL queries for Mileestone 3
+└── sales_data_milstone4.sql  # SQL queries for Mileestone 4
 ```
 
 ## License
