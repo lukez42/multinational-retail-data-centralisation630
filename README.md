@@ -15,7 +15,7 @@
 ---
 
 ## Description
-This project is a data cleaning and extraction pipeline designed to process and clean data from multiple sources (e.g., CSV files, APIs, databases) and upload the cleaned data to a local PostgreSQL database. The aim of the project is to demonstrate proficiency in data cleaning, extraction, and database management using Python, pandas, and SQLAlchemy.
+This project is a data cleaning and extraction pipeline designed to process and clean data from multiple sources (e.g., CSV files, APIs, databases) and upload the cleaned data to a local PostgreSQL database. The aim of the project is to demonstrate proficiency in data cleaning, extraction, processing and database management using Python & various Python libraries and pgAdmin 4.
 
 ### Objectives
 - How to extract data from various sources (CSV, API, database).
