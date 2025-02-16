@@ -44,8 +44,8 @@ To run this project locally, follow these steps:
    python main.py
    ```
    or -->
-   main.py is for testing only.
-   The complete code is in `main.ipynb` run the `main.ipynb` file interactively in your IDE/Jupyter Notebook (preferred)
+   `main.py` is for testing only.
+   **The complete code is in `main.ipynb` run the `main.ipynb` file interactively in your IDE/Jupyter Notebook (preferred)**
    Run `sales_data_milstone3.sql` and `sales_data_milstone4.sql` to check SQL output for Mileestone 3 and 4.
 
 2. **View Cleaned Data**:
