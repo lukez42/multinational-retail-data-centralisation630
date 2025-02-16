@@ -84,32 +84,36 @@ class DataCleaning:
         )  # Use explicit assignment to avoid views
         print(f"Rows after removing duplicates: {len(df)}")
 
-        # Step 4: Remove non-numeric card numbers (allowing '?')
-        def is_valid_card_number(card_num):
-            # Check if all characters are either digits or '?'
-            return all(char.isdigit() or char == "?" for char in str(card_num))
+        # Step 4: Clean non-numeric card numbers (retain only digits)
+        def clean_card_number(card_num):
+            # Remove all non-numeric characters
+            return "".join(filter(str.isdigit, str(card_num)))
 
-        removed_non_numeric = df[
-            ~df["card_number"].apply(is_valid_card_number)
-        ]  # Non-numeric rows
-        removed_non_numeric_file_path = os.path.join(
-            task_dir, "removed_non_numeric.csv"
-        )
-        removed_non_numeric.to_csv(
-            removed_non_numeric_file_path, index=False
-        )  # Export non-numeric rows
-        df = df[df["card_number"].apply(is_valid_card_number)]  # Explicit assignment
-        print(f"Rows after removing non-numeric card numbers: {len(df)}")
+        # Apply the cleaning function to the 'card_number' column
+        original_card_numbers = df[
+            "card_number"
+        ].copy()  # Save original card numbers for comparison
+        df["card_number"] = df["card_number"].apply(clean_card_number)
 
-        # Step 5: Convert 'date_payment_confirmed' to datetime (in place)
-        df = df.copy()  # Ensure we're working with a copy, not a view
-        df.loc[:, "date_payment_confirmed"] = pd.to_datetime(
+        # Identify rows where card numbers were changed
+        modified_rows = df[original_card_numbers != df["card_number"]]
+        modified_rows_file_path = os.path.join(task_dir, "modified_card_numbers.csv")
+        modified_rows.to_csv(
+            modified_rows_file_path, index=False
+        )  # Export modified rows to CSV
+        print(f"Rows with modified card numbers exported to {modified_rows_file_path}")
+
+        # Step 5: Remove rows with empty card numbers (if any)
+        df = df[df["card_number"].str.len() > 0]
+        print(f"Rows after cleaning card numbers: {len(df)}")
+
+        # Step 6: Convert 'date_payment_confirmed' to datetime
+        df["date_payment_confirmed"] = pd.to_datetime(
             df["date_payment_confirmed"], format="mixed", dayfirst=True, errors="coerce"
         )
-        # Ensure the column is explicitly of type datetime
-        df["date_payment_confirmed"] = df["date_payment_confirmed"].astype(
-            "datetime64[ns]"
-        )
+        df.dropna(
+            subset=["date_payment_confirmed"], inplace=True
+        )  # Drop rows with invalid dates
         print(f"Final rows after date cleaning: {len(df)}")
 
         return df

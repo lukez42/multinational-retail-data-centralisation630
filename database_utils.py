@@ -28,7 +28,6 @@ class DatabaseConnector:
         with open(creds_file, "r") as file:
             return yaml.safe_load(file)
 
-
     def init_db_engine(self, source="aws"):
         """Initializes and returns a SQLAlchemy database engine."""
         try:
@@ -55,9 +54,10 @@ class DatabaseConnector:
         with engine.connect() as connection:
             return sqlalchemy.inspect(engine).get_table_names()
 
-    def upload_to_db(self, df, table_name):
+    def upload_to_db(self, df, table_name, dtype=None):
         """
         Uploads a DataFrame to the local PostgreSQL database.
         """
         engine = self.init_db_engine(source="local")
-        df.to_sql(table_name, engine, if_exists="replace", index=False)
+        df.to_sql(table_name, engine, if_exists="replace", index=False, dtype=dtype)
+        print(f"Uploaded {len(df)} rows to {table_name}.")

@@ -43,6 +43,8 @@ To run this project locally, follow these steps:
    ```
    python main.py
    ```
+   or
+   run the `main.ipynb` file interactively in your IDE/Jupyter Notebook (preferred)
 2. **View Cleaned Data**:
    Connect to your PostgreSQL database and query the tables (e.g., dim_users, dim_products, orders_table).
 
