@@ -59,6 +59,8 @@ To run this project locally, follow these steps:
 3. **Query Cleaned Data**:
    Run `sales_data_milstone3.sql` and `sales_data_milstone4.sql` to check SQL output for Mileestone 3 and 4.
 
+Please note for some tasks in Milestone 3 and 4, the SQL queries are in `sales_data_milstone3.sql` and `sales_data_milstone4.sql` respectively. Please follow the instructions in `main.ipynb` to run code interactively in your IDE/Jupyter Notebook and switch to pgAdmin 4 to query the tables if necessary.
+
 ## File Structure
 ```
 .
