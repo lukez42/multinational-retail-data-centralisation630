@@ -79,3 +79,5 @@ Please note for some tasks in Milestone 3 and 4, the SQL queries are in `sales_d
 ```
 
 ## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
