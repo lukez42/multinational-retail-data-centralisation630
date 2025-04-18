@@ -72,7 +72,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/luke-who/multinational-retail-data-centralisation630.git
+   git clone https://github.com/lukez42/multinational-retail-data-centralisation630.git
    cd multinational-retail-data-centralisation630
    ```
 2. **Set Up a Virtual Environment (conda)**:
