@@ -39,10 +39,10 @@ To reduce costs, this project has been migrated from cloud-based data sources to
 |------|----------------|-----------------|
 | Task 3: Extract user data | AWS RDS Database | `Legacy_Data_Source/Legacy_RDS/legacy_users.csv` and `Legacy_Data_Source/Legacy_RDS/orders_table.csv` |
 | Task 4: Extract card details | S3 PDF link | Local file: `Legacy_Data_Source/card_details.pdf` |
-| Task 5: Extract store details | API endpoints | Local file: `Legacy_Data_Source/legacy_store_details.csv` |
-| Task 6: Extract product details | S3 CSV link | Local file: `Legacy_Data_Source/products.csv` |
+| Task 5: Extract store details | API endpoints | `Legacy_Data_Source/legacy_store_details.csv` |
+| Task 6: Extract product details | S3 CSV link | `Legacy_Data_Source/products.csv` |
 | Task 7: Retrieve orders table | AWS RDS Database | `Legacy_Data_Source/Legacy_RDS/orders_table.csv` |
-| Task 8: Retrieve date events data | S3 JSON link | Local file: `Legacy_Data_Source/date_details.json` |
+| Task 8: Retrieve date events data | S3 JSON link | `Legacy_Data_Source/date_details.json` |
 
 ### Local Directory Structure
 
